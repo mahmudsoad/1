@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class player
+{
+    int score, life;
+
+public:
+
+    player(int x, int y)
+    {
+        score = x;
+
+        life = y;
+    }
+
+    friend string referee(player obj1, player obj2);
+};
+
+string referee(player obj1, player obj2)
+{
+    if(obj1.score > obj2.score)
+        return "Player 1 Wins!";
+
+    else if(obj1.score < obj2.score)
+        return "Player 2!";
+
+    else
+    {
+        if(obj1.life < obj2.life)
+            return "Player 1 Wins!";
+
+        else if(obj1.life > obj2.life)
+            return "Player 2 Wins!";
+    }
+}
+
+int main()
+{
+
+    int player1_score, player2_score, player1_age, player2_age;
+
+    cout << "Input Player 1 Score and Age: ";
+
+    cin >> player1_score >> player1_age;
+
+    cout << "Input Player 2 Score and Age: ";
+
+    cin >> player2_score >> player2_age;
+
+    player player1(player1_score, player1_age), player2(player2_score, player2_age);
+
+    cout << referee(player1, player2) << endl;
+
+ return 0;
+}
